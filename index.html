@@ -1,12 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><script>
-(function(){
-  var R=Date; var F=new R('2026-10-29T12:00:00');
-  function D(){ if(arguments.length) return new R(...arguments); return new R(F.getTime()); }
-  D.now=function(){return F.getTime()}; D.parse=R.parse; D.UTC=R.UTC; D.prototype=R.prototype;
-  window.Date=D;
-})();
-</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Steady Machine — Personal Budget Planner</title>
 <style>
 :root{--bg:#f1f5f4;--card:#fff;--tx:#17232d;--mut:#5d6e79;--ac:#17695e;--bt:#fff;--hi:#d99a1c;--bad:#b4364f;--ln:#dae3e1;--sb:#13212b}
@@ -52,7 +45,7 @@ dialog{border:1px solid var(--ln);border-radius:12px;background:var(--card);colo
 #fab{display:none;position:fixed;right:16px;bottom:16px;width:52px;height:52px;border-radius:26px;font-size:26px;line-height:1;padding:0;z-index:9;box-shadow:0 4px 14px rgba(0,0,0,.3)}
 @media(max-width:900px){body{display:block}#nav{height:auto;position:sticky;top:0;z-index:8;display:flex;flex-wrap:nowrap;align-items:center;gap:4px;overflow-x:auto;padding:8px 10px;white-space:nowrap}#nav::-webkit-scrollbar{display:none}.brand{margin:0 10px 0 4px;flex:none;font-size:17px;width:auto}.brand small,.hint{display:none}#nav a{flex:none;margin:0}#top{position:static;padding:10px 16px}main{padding-left:16px;padding-right:16px}.hero{grid-template-columns:1fr}.gc{grid-template-columns:1fr}.hero h1{font-size:28px}input,select,textarea{font-size:16px}#fab{display:block}#toast{bottom:80px}}
 @media print{#nav,#top,#fab,#toast{display:none}body{display:block}}
-</style></head><body><div style="position:fixed;top:0;left:0;right:0;z-index:100;background:#0f766e;color:#fff;text-align:center;padding:10px 12px;font-family:system-ui,sans-serif;font-size:15px;font-weight:700">DEMO &mdash; Sample data shown. Try it with sample numbers, then buy the full planner to start with your own numbers.</div><nav id="nav" aria-label="Main menu"></nav><div><header id="top"></header><main></main></div>
+</style></head><body><nav id="nav" aria-label="Main menu"></nav><div><header id="top"></header><main></main></div>
 <dialog id="dlg" aria-labelledby="dlgt"><h3 id="dlgt">Add transaction</h3><div class="col" onkeydown="if(event.key==='Enter'&&event.target.tagName!=='SELECT'){event.preventDefault();qsave()}"><select id="qt" aria-label="Type" onchange="$('#qc').hidden=this.value==='Income'"><option>Expense</option><option>Income</option></select><input id="qm" type="number" step="any" min="0" placeholder="Amount" aria-label="Amount"><select id="qc" aria-label="Category"></select><select id="qw" aria-label="Who" hidden></select><input id="qd" type="date" aria-label="Date"><input id="qn" placeholder="Description" aria-label="Description"></div><div class="row"><button class="b" onclick="qsave()">Save</button><button class="b o" onclick="$('#dlg').close()">Cancel</button></div></dialog>
 <dialog id="dlg2" aria-labelledby="d2t"><h3 id="d2t"></h3><p id="d2m" class="mut"></p><input id="d2i" type="number" step="any" min="0" aria-label="Amount" hidden><div class="row" style="margin-top:12px"><button class="b" id="d2ok">OK</button><button class="b o" onclick="$('#dlg2').close()">Cancel</button></div></dialog>
 <div id="toast" role="status" aria-live="polite"></div><button id="fab" class="b" onclick="quick()" aria-label="Add transaction">+</button>
@@ -245,5 +238,5 @@ $('#top').innerHTML=`<b class="ttl">${NAV.find(x=>x[0]===page)[1]}</b><div class
 $('main').innerHTML=P[page]();document.title=NAV.find(x=>x[0]===page)[1]+' · '+APP;scrollTo(0,page===before?sy:0);
 if(innerWidth<=900){const a=$('#nav a.on');if(a)$('#nav').scrollLeft=Math.max(0,a.offsetLeft-24)}}
 document.addEventListener('visibilitychange',()=>{if(!document.hidden){const n=new Date();if(n.toDateString()!==now.toDateString()){now=n;go()}}});
-go();
-</script><script>window.addEventListener("load",function(){setTimeout(function(){try{demo()}catch(e){}},800)});</script></body></html>
+if(!S.income.length&&!S.bills.length&&!S.tx.length)demo0();else go();
+</script></body></html>
